@@ -1,4 +1,5 @@
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.concurrent.ConcurrentSkipListSet;
 
@@ -17,8 +18,10 @@ public class FileParser implements Runnable {
 
         File file = new File(filePath);
 
+        //checking if file is actually there and can be read
         if (file.isFile() && file.canRead()) {
-            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(
+                    new FileInputStream(file), StandardCharsets.UTF_8));) {
 
                 //reading first string
                 String readString = br.readLine();
