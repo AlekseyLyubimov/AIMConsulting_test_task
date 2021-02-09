@@ -16,7 +16,7 @@ public class FileParser implements Runnable {
     public void run() {
 
         File file = new File(filePath);
-        
+
         if (file.isFile() && file.canRead()) {
             try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 
